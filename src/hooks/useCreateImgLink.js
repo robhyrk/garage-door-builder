@@ -1,31 +1,31 @@
 import { useEffect, useState, useRef } from "react"
-import axios from "axios"
 
-const UseCreateImgLink = (lites, liteStyles, panes, width, height, style) => {
-  const defaultImage = "http://zendoors.stage-cc.com/wp-content/uploads/woocommerce-placeholder-1150x1150.png"
+const useCreateImgLink = (lites, liteStyles, panes, width, height, style) => {
+  const imagePath = process.env.REACT_APP_IMAGE_PATH
+  const defaultImage = `${imagePath}${process.env.REACT_APP_DEFAULT_IMAGE}`
   const [imgSrc, setImgSrc] = useState(defaultImage)
   const [message, setMessage] = useState("")
   const isMounted = useRef(false)
 
   const createImgSrc = async () => {
-    const path = "http://zendoors.stage-cc.com/wp-content/uploads/2022/11/"
     setMessage("")
     if (lites === "SD") {
-      console.log("solid door")
-      setImgSrc(`${path}${width}X${height}-${style}-Model.png`)
+      //solid door only
+      setImgSrc(`${imagePath}${width}X${height}-${style}-Model.png`)
     } else if (panes && lites && !liteStyles) {
-      console.log("no lite styles")
-      setImgSrc(`${path}${width}X${height}-${style}-${panes}-${lites}-Model.png`)
+      //panes and lites without lite styles
+      setImgSrc(`${imagePath}${width}X${height}-${style}-${panes}-${lites}-Model.png`)
     } else if (panes && lites && liteStyles) {
-      console.log("all options")
-      setImgSrc(`${path}${width}X${height}-${style}-${liteStyles}-${panes}-${lites}-Model.png`)
+      //lite styles with panes and lites
+      setImgSrc(`${imagePath}${width}X${height}-${style}-${liteStyles}-${panes}-${lites}-Model.png`)
     } else {
-      setImgSrc("http://zendoors.stage-cc.com/wp-content/uploads/woocommerce-placeholder-1150x1150.png")
+      setImgSrc(defaultImage)
       setMessage("*This configuration is not available")
     }
   }
-  console.log(imgSrc)
+
   useEffect(() => {
+    //prevents running on initial render and overwritting default image
     if (isMounted.current) {
       //only run if minimum required options are selected
       if (width && height && style && lites) {
@@ -39,4 +39,4 @@ const UseCreateImgLink = (lites, liteStyles, panes, width, height, style) => {
   return [imgSrc, message, setImgSrc, setMessage]
 }
 
-export default UseCreateImgLink
+export default useCreateImgLink

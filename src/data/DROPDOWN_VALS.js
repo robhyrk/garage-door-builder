@@ -47,7 +47,6 @@ export const DROPDOWN_VALUES = {
     Colonial: "COLONIAL"
   },
   Panes: {
-    0: "",
     1: "1P",
     2: "2P",
     3: "3P",

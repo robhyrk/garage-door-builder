@@ -7,8 +7,8 @@ import ImagePreview from "./components/ImagePreview"
 import DoorCustomizer from "./components/DoorCustomizer"
 import Page from "./components/Page"
 
-import UseCreateImgLink from "./hooks/useCreateImgLink"
-import UseDropdownFilter from "./hooks/useDropdownFilter"
+import useCreateImgLink from "./hooks/useCreateImgLink"
+import useDropdownFilter from "./hooks/useDropdownFilter"
 
 function App() {
   const [width, setWidth] = useState("")
@@ -18,36 +18,33 @@ function App() {
   const [liteStyles, setLiteStyles] = useState("")
   const [panes, setPanes] = useState("")
 
-  const [imgSrc, message, setImgSrc, setMessage] = UseCreateImgLink(lites, liteStyles, panes, width, height, style)
-  const [dropDownValues] = UseDropdownFilter(lites)
+  const [imgSrc, message, setImgSrc, setMessage] = useCreateImgLink(lites, liteStyles, panes, width, height, style)
+  const [dropDownValues] = useDropdownFilter(lites, liteStyles, setLiteStyles, panes, setPanes)
 
   const handleChange = (label, e) => {
     const val = e.target.value
     if (label === "Width") {
       setWidth(val)
-    } else if (label === "Height") {
+    }
+    if (label === "Height") {
       setHeight(val)
-    } else if (label === "Style") {
+    }
+    if (label === "Style") {
       setStyle(val)
-    } else if (label === "Lites") {
-      //removes pane and lite style values since solid doors do not contain those vals
-      if (val === "SD") {
-        setLites(val)
-        setLiteStyles("")
-        setPanes("")
-        return
-      } else {
-        setLites(val)
-      }
-    } else if (label === "Lites Styles") {
+    }
+    if (label === "Lites") {
+      setLites(val)
+    }
+    if (label === "Lites Styles") {
       setLiteStyles(val)
-    } else if (label === "Panes") {
+    }
+    if (label === "Panes") {
       setPanes(val)
     }
   }
 
   return (
-    <Page classes="md:grid grid-cols-2 gap-10 h-screen" title="Garage Door Builder">
+    <Page classes="lg:grid grid-cols-2 gap-10 h-screen" title="Garage Door Builder">
       <ImagePreview message={message} src={imgSrc} setImgSrc={setImgSrc} setMessage={setMessage} />
       <DoorCustomizer dropDownValues={dropDownValues} lites={lites} handleChange={handleChange} />
     </Page>
