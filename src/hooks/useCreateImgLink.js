@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react"
 
-const useCreateImgLink = (lites, liteStyles, panes, width, height, style) => {
+const useCreateImgLink = (lites, width, height, style) => {
   const imagePath = process.env.REACT_APP_IMAGE_PATH
   const defaultImage = `${imagePath}${process.env.REACT_APP_DEFAULT_IMAGE}`
   const [imgSrc, setImgSrc] = useState(defaultImage)
@@ -9,24 +9,20 @@ const useCreateImgLink = (lites, liteStyles, panes, width, height, style) => {
 
   const createImgSrc = async () => {
     setMessage("")
+
     if (lites === "SD") {
       //solid door only
       setImgSrc(`${imagePath}${width}X${height}-${style}-Model.png`)
-    } else if (panes && lites && !liteStyles) {
-      //panes and lites without lite styles
-      setImgSrc(`${imagePath}${width}X${height}-${style}-${panes}-${lites}-Model.png`)
-    } else if (panes && lites && liteStyles) {
-      //lite styles with panes and lites
-      setImgSrc(`${imagePath}${width}X${height}-${style}-${liteStyles}-${panes}-${lites}-Model.png`)
     } else {
-      setImgSrc(defaultImage)
-      setMessage("*This configuration is not available")
+      console.log(`${imagePath}${width}X${height}-${style}-${lites}-Model.png`)
+      setImgSrc(`${imagePath}${width}X${height}-${style}-${lites}-Model.png`)
     }
   }
 
   useEffect(() => {
     //prevents running on initial render and overwritting default image
     if (isMounted.current) {
+      console.log(width, height, style, lites)
       //only run if minimum required options are selected
       if (width && height && style && lites) {
         createImgSrc()
@@ -34,7 +30,7 @@ const useCreateImgLink = (lites, liteStyles, panes, width, height, style) => {
     } else {
       isMounted.current = true
     }
-  }, [width, height, style, lites, liteStyles, panes])
+  }, [width, height, style, lites])
 
   return [imgSrc, message, setImgSrc, setMessage]
 }

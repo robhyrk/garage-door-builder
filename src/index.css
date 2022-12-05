@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 select {
-  @apply bg-gray-100 border-0 p-2 text-gray-500 focus:outline-0;
+  @apply bg-gray-100 border-0 p-2 text-gray-500 focus:outline-0 text-xs;
 }

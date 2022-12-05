@@ -33,25 +33,36 @@ export const DROPDOWN_VALUES = {
     "Venice (SP)": "VENICE-SP",
     "Vertical T&G": "VERTICAL-TG",
     Victorian: "VICTORIAN",
-    "Victorian Boxed": "VICTORIAN BOXED",
+    "Victorian Boxed": "VICTORIAN-BOXED",
     "Victorian T&G": "VICTORIAN-TG"
   },
   Lites: {
     "Solid Door": "SD",
-    Arched: "AR",
-    Square: "SQ"
-  },
-  "Lites Styles": {
-    None: "",
-    Venice: "VENICE",
-    Colonial: "COLONIAL"
-  },
-  Panes: {
-    1: "1P",
-    2: "2P",
-    3: "3P",
-    4: "4P",
-    6: "6P",
-    8: "8P"
+    "1 Pane Arched": "1P-AR",
+    "1 Pane Sqaure": "1P-SQ",
+    "2 Pane Arched": "2P-AR",
+    "2 Pane Square": "2P-SQ",
+    "3 Pane Arched": "3P-AR",
+    "3 Pane Square": "3P-SQ",
+    "4 Pane Arched": "4P-AR",
+    "4 Pane Square": "4P-SQ",
+    "6 Pane Arched": "6P-AR",
+    "6 Pane Square": "6P-SQ",
+    "8 Pane Arched": "8P-AR",
+    "8 Pane Square": "8P-SQ",
+    "Colonial 4 Pane Arched": "COLONIAL-4P-AR",
+    "Colonial 4 Pane Square": "COLONIAL-4P-SQ",
+    "Colonial 6 Pane Arched": "COLONIAL-6P-AR",
+    "Colonial 6 Pane Square": "COLONIAL-6P-SQ",
+    "Colonial 8 Pane Arched": "COLONIAL-8P-AR",
+    "Colonial 8 Pane Square": "COLONIAL-8P-SQ",
+    "Venice 1 Pane Arched": "VENICE-1P-AR",
+    "Venice 1 Pane Square": "VENICE-1P-SQ",
+    "Venice 2 Pane Arched": "VENICE-2P-AR",
+    "Venice 2 Pane Square": "VENICE-2P-SQ",
+    "Venice 3 Pane Arched": "VENICE-3P-AR",
+    "Venice 3 Pane Square": "VENICE-3P-SQ",
+    "Venice 4 Pane Arched": "VENICE-4P-AR",
+    "Venice 4 Pane Square": "VENICE-4P-SQ"
   }
 }
